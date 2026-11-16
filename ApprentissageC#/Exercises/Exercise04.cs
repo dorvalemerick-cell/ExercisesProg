@@ -11,6 +11,7 @@ namespace Exercise02
             int[] aiNotes = { 50, 80, 75, 62, 92 };
 
             Console.WriteLine($"Moyenne: {MoyenneNotes(aiNotes)}");
+            TraiterNote(aiNotes);
         }
 
         private static int MoyenneNotes(int[] p_aiNotes)
@@ -26,6 +27,12 @@ namespace Exercise02
             return iReponse;
         }
 
+        private static int TraiterNote(int[] p_aiNotes);
+        {
+            foreach (int note in p_aiNotes)
+            {
 
+            }
+        }
     }
 }
