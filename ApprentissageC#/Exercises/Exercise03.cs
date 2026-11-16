@@ -3,36 +3,31 @@ using System.Runtime.InteropServices;
 
 namespace Exercise02
 {
-
     class Program
     {
+        static string? sReponse = "";
+        static int iNombre = 0;
 
         static void Main(string[] args)
         {
-            for (; ; )
-            {
-                if (LireInt("Entrez un nombre (Q pour quitter): ") == 9999)
-                    break;
-            }
+            DemanderNombre();
+            TraiterNombre();
         }
 
+        private static void DemanderNombre()
+        {
+            Console.Write("Entrez un nombre: ");
+            sReponse = Console.ReadLine();
+            bool bValide = int.TryParse(sReponse, out iNombre);
+
+        }
 
         private static void TraiterNombre()
         {
-
-        }
-
-        private static int LireInt(string p_sQuestion)
-        {
-            Console.Write(p_sQuestion);
-            string? sReponse = Console.ReadLine();
-            bool bValide = int.TryParse(sReponse, out int iNombre);
-            if (bValide)
-                return iNombre;
-            else if (bValide == false && sReponse == "Q")
-                return 9999;
-            Console.WriteLine("Saisie non valide");
-            return iNombre;
+            for (int i = 1; i <= 12; i++)
+            {
+                Console.Write($"{iNombre * i} ");
+            }
         }
     }
 }
