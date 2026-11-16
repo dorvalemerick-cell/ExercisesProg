@@ -7,18 +7,28 @@ namespace Exercise02
     {
         static string? sReponse = "";
         static int iNombre = 0;
+        static bool bValide;
 
         static void Main(string[] args)
         {
-            DemanderNombre();
-            TraiterNombre();
+            for (; ; )
+            {
+
+                DemanderNombre();
+                if (sReponse == "Q")
+                    break;
+                else if (!bValide)
+                    Console.WriteLine("Saisie non valide");
+                else
+                    TraiterNombre();
+            }
         }
 
         private static void DemanderNombre()
         {
             Console.Write("Entrez un nombre: ");
             sReponse = Console.ReadLine();
-            bool bValide = int.TryParse(sReponse, out iNombre);
+            bValide = int.TryParse(sReponse, out iNombre);
 
         }
 
@@ -26,7 +36,7 @@ namespace Exercise02
         {
             for (int i = 1; i <= 12; i++)
             {
-                Console.Write($"{iNombre * i} ");
+                Console.WriteLine($"{iNombre * i} ");
             }
         }
     }
