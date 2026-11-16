@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-
-
 Main(){
 	while true
 	do
@@ -18,7 +15,7 @@ AskName()
 	return $NOM
 }
 
-AskAge () 
+AskAge ()
 {
 	read -p "Entrez votre age (Q pour quitter): " AGE
 	return $AGE
