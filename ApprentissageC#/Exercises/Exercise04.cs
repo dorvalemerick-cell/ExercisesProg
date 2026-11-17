@@ -11,7 +11,7 @@ namespace Exercise02
             int[] aiNotes = { 50, 80, 75, 62, 92 };
 
             Console.WriteLine($"Moyenne: {MoyenneNotes(aiNotes)}");
-            TraiterNote(aiNotes);
+            Console.WriteLine($"Plus grande note: {TraiterNote(aiNotes)}");
         }
 
         private static int MoyenneNotes(int[] p_aiNotes)
@@ -27,12 +27,18 @@ namespace Exercise02
             return iReponse;
         }
 
-        private static int TraiterNote(int[] p_aiNotes);
+        private static int TraiterNote(int[] p_aiNotes)
         {
+            int iPlusGrand = p_aiNotes[0];
+
             foreach (int note in p_aiNotes)
             {
-
+                if (note > iPlusGrand)
+                {
+                    iPlusGrand = note;
+                }
             }
+            return iPlusGrand;
         }
     }
 }
