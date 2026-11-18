@@ -8,10 +8,11 @@ namespace Exercise02
     {
         static void Main(string[] args)
         {
-            int[] aiNotes = { 50, 80, 75, 62, 92 };
+            int[] aiNotes = { 50, 63, 42, 62, 60 };
 
             Console.WriteLine($"Moyenne: {MoyenneNotes(aiNotes)}");
-            Console.WriteLine($"Plus grande note: {TraiterNote(aiNotes)}");
+            Console.WriteLine($"Plus grande note: {PlusGrandeNote(aiNotes)}");
+            Console.WriteLine($"Plus petite note: {PlusPetiteNote(aiNotes)}");
         }
 
         private static int MoyenneNotes(int[] p_aiNotes)
@@ -27,7 +28,7 @@ namespace Exercise02
             return iReponse;
         }
 
-        private static int TraiterNote(int[] p_aiNotes)
+        private static int PlusGrandeNote(int[] p_aiNotes)
         {
             int iPlusGrand = p_aiNotes[0];
 
@@ -39,6 +40,20 @@ namespace Exercise02
                 }
             }
             return iPlusGrand;
+        }
+
+        public static int PlusPetiteNote(int[] p_aiNotes)
+        {
+            int iPlusPetit = p_aiNotes[0];
+
+            foreach (int note in p_aiNotes)
+            {
+                if (note < iPlusPetit)
+                {
+                    iPlusPetit = note;
+                }
+            }
+            return iPlusPetit;
         }
     }
 }
