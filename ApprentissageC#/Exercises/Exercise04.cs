@@ -8,11 +8,16 @@ namespace Exercise02
     {
         static void Main(string[] args)
         {
-            int[] aiNotes = { 50, 63, 42, 62, 60 };
+            int[] aiNotes = { 50, 63, 92, 62, 60 };
 
             Console.WriteLine($"Moyenne: {MoyenneNotes(aiNotes)}");
             Console.WriteLine($"Plus grande note: {PlusGrandeNote(aiNotes)}");
             Console.WriteLine($"Plus petite note: {PlusPetiteNote(aiNotes)}");
+            if (DefenirReusitte(aiNotes))
+                Console.WriteLine("RÉUSITTE");
+            else
+                Console.WriteLine("ÉCHEC");
+
         }
 
         private static int MoyenneNotes(int[] p_aiNotes)
@@ -54,6 +59,26 @@ namespace Exercise02
                 }
             }
             return iPlusPetit;
+        }
+
+        public static bool DefenirReusitte(int[] p_aiNotes)
+        {
+            int iTotal = 0;
+
+            foreach (int note in p_aiNotes)
+            {
+                iTotal += note;
+            }
+            float fMoyenne = iTotal / p_aiNotes.Length;
+
+            if (fMoyenne >= 60)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
