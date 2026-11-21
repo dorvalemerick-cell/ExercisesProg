@@ -39,7 +39,6 @@ namespace JeuPendu
             /* #################### MAIN GAME LOOP #################### */
             for (; ; )
             {
-                Console.Clear();
                 /* ###### MONTRER DONNÉES ###### */
                 Console.WriteLine($"Jeu pendu:\tGagnées: {iPartiesGagner}  Perdus: {iPartiesPerdu}");
                 Console.WriteLine(sMotTirer);
@@ -48,13 +47,16 @@ namespace JeuPendu
                 Console.WriteLine($"Lettres saisie: {sLettreSaisie}");
                 /* ###### MONTRER DONNÉES ###### */
 
-                /* ###### DEMANDER SAISIE ###### */
+                /* ########## DEMANDER SAISIE ########## */
                 string sLettre;
                 do
                 {
                     Console.Write("Entrer une lettre: ");
                     sLettre = Console.ReadLine();
+
                 } while (string.IsNullOrEmpty(sLettre));
+                /* ########## DEMANDER SAISIE ########## */
+
 
                 if (sLettre == sMotTirer)
                     iPartiesGagner += 1;
@@ -107,6 +109,7 @@ namespace JeuPendu
 
         public static void ValiderLettre(string p_Saisie, char[] p_MotCacher)
         {
+            Console.Clear();
             if (string.IsNullOrEmpty(p_Saisie) || p_Saisie.Length != 1)
             {
                 Console.WriteLine("Saisir qu'une lettre svp");
@@ -149,6 +152,26 @@ namespace JeuPendu
             {
                 p_acMotCacher[i] = '_';
             }
+        }
+
+        public static void PartieGagner()
+        {
+
+        }
+
+        public static void PartiePerdu()
+        {
+
+        }
+
+        public static void BonMotSaisie()
+        {
+
+        }
+
+        public static void MauvaisMotSaisie()
+        {
+
         }
     }
 }
