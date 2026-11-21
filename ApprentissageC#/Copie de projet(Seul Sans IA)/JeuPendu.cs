@@ -1,20 +1,50 @@
+using System.Net.Http.Headers;
+
 namespace JeuPendu
 {
     internal class Program
     {
         const string NOM_FICHIER_MOT = "mot";
-
+        const int MAX_MOT_CHARGER = 100;
         static string? sMotTirer = "";
 
         static void Main(string[] args)
         {
-            int iMaxMotCharger = 50;
-            string[] asListeMots = new string[iMaxMotCharger];
 
 
+            /* ###### TRAITEMENT DES MOTS ###### */
+            string[] asListeMots = new string[MAX_MOT_CHARGER];
             ChargerFichierMot(asListeMots);
             TirerMot(asListeMots);
-            Console.WriteLine(sMotTirer);
+            /* ###### TRAITEMENT DES MOTS ###### */
+
+            /* CACHER LE MOT */
+            char[] acMotCacher = new char[sMotTirer!.Length];
+            CacherMot(acMotCacher);
+
+            string? sBanqueLettres = "abcdefghijklmnopqrstuvwxyz";
+            string? sLettreSaisie = "";
+
+            /* #################### MAIN GAME LOOP #################### */
+            for (; ; )
+            {
+                /* ###### MONTRER DONNÉES ###### */
+                Console.WriteLine(sMotTirer);
+                Console.WriteLine($"Mot a trouver: {new string(acMotCacher)}");
+                Console.WriteLine($"Lettres restantes: {sBanqueLettres}");
+                Console.WriteLine($"Lettres saisie: {sLettreSaisie}");
+                /* ###### MONTRER DONNÉES ###### */
+
+                /* ###### DEMANDER SAISIE ###### */
+                Console.Write("Entrer une lettre: ");
+                string? sLettre = Console.ReadLine();
+
+                /* ##### TRAITER LES DONNÉES MONTRER ##### */
+                sBanqueLettres = sBanqueLettres.Replace(sLettre!, "_");
+                sLettreSaisie += sLettre;
+
+                ValiderLettre();
+            }
         }
 
         public static void ChargerFichierMot(string[] p_asListesMots)
@@ -46,14 +76,23 @@ namespace JeuPendu
                 iIndexAleatoire = rnd.Next(p_asListe.Length);
                 sMotTirer = p_asListe[iIndexAleatoire];
             } while (string.IsNullOrEmpty(p_asListe[iIndexAleatoire]));
-
-            Console.WriteLine(iIndexAleatoire);
         }
 
         public static void ValiderLettre()
         {
             // Valider une lettre qu l'utilisateur a saisie
+            for (int i = 0; i <= sMotTirer.Length; i++)
+            {
 
+            }
+
+        }
+        public static void CacherMot(char[] p_acMotCacher)
+        {
+            for (int i = 0; i <= p_acMotCacher.Length - 1; i++)
+            {
+                p_acMotCacher[i] = '_';
+            }
         }
     }
 }
