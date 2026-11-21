@@ -3,6 +3,9 @@ namespace JeuPendu
     internal class Program
     {
         const string NOM_FICHIER_MOT = "mot";
+
+        static string? sMotTirer = "";
+
         static void Main(string[] args)
         {
             int iMaxMotCharger = 50;
@@ -10,6 +13,8 @@ namespace JeuPendu
 
 
             ChargerFichierMot(asListeMots);
+            TirerMot(asListeMots);
+            Console.WriteLine(sMotTirer);
         }
 
         public static void ChargerFichierMot(string[] p_asListesMots)
@@ -28,10 +33,21 @@ namespace JeuPendu
             }
         }
 
-        public static void TirerMot()
+        public static void TirerMot(string[] p_asListe)
         {
             // Prendre et charger un mot aleatoire du fichier mot qu'on a telecharger
 
+            Random? rnd = new Random()!;
+            int iIndexAleatoire;
+
+            // Piger un autre index si la valeur associer a l'index est null ou vide
+            do
+            {
+                iIndexAleatoire = rnd.Next(p_asListe.Length);
+                sMotTirer = p_asListe[iIndexAleatoire];
+            } while (string.IsNullOrEmpty(p_asListe[iIndexAleatoire]));
+
+            Console.WriteLine(iIndexAleatoire);
         }
 
         public static void ValiderLettre()
