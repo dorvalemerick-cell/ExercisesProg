@@ -54,18 +54,18 @@ namespace JeuPendu
                     Console.Write("Entrer une lettre: ");
                     sLettre = Console.ReadLine();
 
-                } while (string.IsNullOrEmpty(sLettre));
                 /* ########## DEMANDER SAISIE ########## */
 
+                /* ##### FONCTION DE QUITTAGE ##### */
+                if (sLettre == "QUITTER")
+                    break;
+                } while (string.IsNullOrEmpty(sLettre));
 
+                // ##### FONCTION SAISIE MOTS COMPLETS #####
                 if (sLettre == sMotTirer)
                     iPartiesGagner += 1;
                 else
                     Console.WriteLine("oops, un membre d'ajouter");
-
-                /* ##### QUITTAGE ##### */
-                if (sLettre == "QUITTER")
-                    break;
 
 
                 /* ##### TRAITER LES DONNÉES MONTRER ##### */
