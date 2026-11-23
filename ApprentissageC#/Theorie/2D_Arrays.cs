@@ -13,32 +13,19 @@ namespace Arrays2D
                 new int[] { 1, 2 }            // third row --> Matrix[2];
             };
 
-            // * in this array, the rows get counted first
-            // int rows = Matrix.Length; // The number of nwe objects in Matrix[][]
-            // for (int i = 0; i < rows; i++)
-            // {
-            //     int collums = Matrix[i].Length; // Returns the num of values in each row (collums)
-            //     for (int j = 0; j < collums; j++)
-            //     {
-            //         Console.Write($"{Matrix[i][j]} ");
-            //     }
-            //     Console.WriteLine();
-            // }
-            //
-            //
-            string reverse = ReverseString("Emerick");
-            Console.WriteLine(reverse);
+           // * in this array, the rows get counted first
+            int rows = Matrix.Length; // The number of nwe objects in Matrix[][]
+            for (int i = 0; i < rows; i++)
+            {
+                int collums = Matrix[i].Length; // Returns the num of values in each row (collums)
+                for (int j = 0; j < collums; j++)
+                {
+                    Console.Write($"{Matrix[i][j]} ");
+                }
+                Console.WriteLine();
+            }
 
 
-        }
-
-        public static string ReverseString(string s)
-        {
-            char[] cArray = s.ToCharArray();
-            Array.Reverse(cArray);
-            s = new string(cArray);
-
-            return s;
         }
     }
 }
