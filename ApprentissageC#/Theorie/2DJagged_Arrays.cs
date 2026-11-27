@@ -62,5 +62,13 @@ namespace Arrays2D
 
 
       }
+
+      public static void TransposeMatrix()
+      {
+         int[][] matrix = new int[][] {
+            new int[] {1, 2, 3, 4 ,5 },
+            new int[] {5, 21, 2 ,4 }
+         };
+      }
     }
 }
