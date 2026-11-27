@@ -104,15 +104,27 @@ namespace Arrays2D
          // define rows
          int rows = matrix.Length;
 
+         // Create array that will hold the sums
+         int[] sums = new int[rows];
+
          // Itterate through the rows
          for (int i = 0; i < rows; i++)
          {
+            // re-initialize sum to zero to start calculating for the next row
+            int sum = 0;
+
+            // Iterate through the collumns and continue adding to 'sum' until [i] reaches the limit
             for (int j = 0; j < matrix[i].Length; j++)
-            {
-               Console.Write($"{matrix[i][j]}\t");
-            }
-            Console.WriteLine();
+               sum += matrix[i][j];
+            // [i] reached the limit, add the final value of "sum" to the array "sums"
+            sums[i] = sum;
          }
+
+         // Print the contents of sums
+         foreach (int elements in sums)
+            Console.WriteLine(elements);
       }
+
+
    }
 }
