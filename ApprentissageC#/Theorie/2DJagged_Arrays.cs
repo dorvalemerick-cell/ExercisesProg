@@ -124,7 +124,10 @@ namespace Arrays2D
          foreach (int elements in sums)
             Console.WriteLine(elements);
       }
+      public static void MultiplyMatrices()
+      {
 
+      }
 
    }
 }
