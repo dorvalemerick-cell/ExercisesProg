@@ -9,7 +9,9 @@ namespace Arrays2D
       {
          //LireMatrix();
          //AdditionnerMatrix();
-         TransposeMatrix();
+         //TransposeMatrix();
+         CaluclateSumRow();
+
       }
       public static void LireMatrix()
       {
@@ -85,6 +87,29 @@ namespace Arrays2D
             {
                result[i][j] = matrix[j][i];
                Console.Write($"{result[i][j]}\t");
+            }
+            Console.WriteLine();
+         }
+      }
+
+      public static void CaluclateSumRow()
+      {
+         // Create matrix
+         int[][] matrix = new int[][] {
+            new int[] {4, 2, 4, 5 },
+            new int[] {6, 2, 1, 4, 6 },
+            new int[] {5, 1, 4}
+         };
+
+         // define rows
+         int rows = matrix.Length;
+
+         // Itterate through the rows
+         for (int i = 0; i < rows; i++)
+         {
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+               Console.Write($"{matrix[i][j]}\t");
             }
             Console.WriteLine();
          }
