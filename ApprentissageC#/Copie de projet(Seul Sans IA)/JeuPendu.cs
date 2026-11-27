@@ -1,6 +1,16 @@
 
 namespace JeuPendu
 {
+
+    /// <summary>
+    /// Auteur: Emerick Dorval
+    /// Description: Faire un algoithme de jeux de bonhomme pendu. Une liste de mot doit etre charger d'un fichier texte.
+    /// De cette liste, un mot doit etre piger au hasard et ce mot va etre le mot rechercher.
+    /// Une banque de lettre doit retrecir apres chaque saisie, le mot choisi doit etre cacher par des underscores et, si
+    /// la saisie est bonne, le decouvrir de petit a petit. A chaque erreurs, un membre sur le bonhomme doit apparaitre et si ils
+    /// apparaissent tous, la partie est perdu. Il y a un compteur de victoire et de défaite.
+    /// Date: 21-11-2026
+    /// </summary>
     internal class Program
     {
         const string NOM_FICHIER_MOT = "mot";
@@ -19,8 +29,10 @@ namespace JeuPendu
 
             while (bGameLoop)
             {
+                // Settez les valeurs par défault
                 bPartieGagner = false;
                 bPartiePerdu = false;
+                iErreurs = 0;
 
                 /* ###### TRAITEMENT DES MOTS ###### */
                 string[] asListeMots = new string[MAX_MOT_CHARGER];
@@ -49,7 +61,6 @@ namespace JeuPendu
                     Console.WriteLine($"Lettres saisie: {sLettreSaisie}");
                     Console.WriteLine();
 
-<<<<<<< HEAD
                     /* ###### MONTRER DONNÉES ###### */
 
                     /* ########## DEMANDER SAISIE ########## */
@@ -61,16 +72,8 @@ namespace JeuPendu
                         sLettre = Console.ReadLine()!;
 
                     } while (string.IsNullOrEmpty(sLettre));
-=======
-                /* ########## DEMANDER SAISIE ########## */
->>>>>>> refs/remotes/origin/Main
 
-                /* ##### FONCTION DE QUITTAGE ##### */
-                if (sLettre == "QUITTER")
-                    break;
-                } while (string.IsNullOrEmpty(sLettre));
 
-<<<<<<< HEAD
                     /* ##### FONCTION QUITTAGE, SAISIE DE MOTS COMPLET ET TRAITEMENT DE SAISIE NORMALE (lettres) ##### */
                     string? sReponse = "";
                     if (sLettre == "QUITTER")
@@ -110,15 +113,8 @@ namespace JeuPendu
                         /* TRAITER LES DONNÉES MONTRÉES EN HAUT */
                         sBanqueLettres = sBanqueLettres.Replace(sLettre!, "_");
                         sLettreSaisie += sLettre;
-=======
-                // ##### FONCTION SAISIE MOTS COMPLETS #####
-                if (sLettre == sMotTirer)
-                    iPartiesGagner += 1;
-                else
-                    Console.WriteLine("oops, un membre d'ajouter");
 
->>>>>>> refs/remotes/origin/Main
-
+                        Console.Clear();
                         ValiderLettre(sLettre, acMotCacher);
                     }
 
@@ -173,7 +169,10 @@ namespace JeuPendu
             }
         }
 
-
+        /// <summary>
+        /// Description: Télécharge le contenu du fichier texte et store le dans un tableau.
+        /// </summary>
+        /// <param name="p_asListesMots">Représente la liste dans laquelle ont store les mots télécharger</param>
         public static void ChargerFichierMot(string[] p_asListesMots)
         {
             int iCompteur = 0;
@@ -191,7 +190,10 @@ namespace JeuPendu
         }
 
 
-
+        /// <summary>
+        /// Description: Tire un mot de la banque de mot au hasard
+        /// </summary>
+        /// <param name="p_asListe">Représente la le tableau dans laquelle on a les mots</param>
         public static void TirerMot(string[] p_asListe)
         {
             // Prendre et charger un mot aleatoire du fichier mot qu'on a telecharger
@@ -209,10 +211,13 @@ namespace JeuPendu
 
 
 
-
+        /// <summary>
+        /// Description: Valide la saisie
+        /// </summary>
+        /// <param name="p_Saisie">Représente la saisie par l'utilisateur</param>
+        /// <param name="p_MotCacher">Représente la variable dans laquelle est le mot cacher</param>
         public static void ValiderLettre(string p_Saisie, char[] p_MotCacher)
         {
-            Console.Clear();
 
             // Check si la saisie est vide et redemander la saisie si oui
             if (string.IsNullOrEmpty(p_Saisie) || p_Saisie.Length != 1)
@@ -251,7 +256,10 @@ namespace JeuPendu
             }
         }
 
-
+        /// <summary>
+        /// Desctiption: Cacher le mot tirer au hasard
+        /// </summary>
+        /// <param name="p_acMotCacher"> Représente le tableau dans laquelle on va storer les underscores</param>
         public static void CacherMot(char[] p_acMotCacher)
         {
             // Ajoute un '_' pour chaque lettres du mot tirer (ex: ecrire 4 '_' si le mot a 4 lettres)
@@ -261,6 +269,9 @@ namespace JeuPendu
             }
         }
 
+        /// <summary>
+        /// Description: La logique et le dessinage du bonhomme
+        /// </summary>
         public static void DessinerPendu()
         {
             // fct if ternaire:   condition ? valeurOui : valeurNon
