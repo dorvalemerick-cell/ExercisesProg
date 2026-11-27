@@ -8,7 +8,8 @@ namespace Arrays2D
       public static void Main(string[] args)
       {
          //LireMatrix();
-         AdditionnerMatrix();
+         //AdditionnerMatrix();
+         TransposeMatrix();
       }
       public static void LireMatrix()
       {
@@ -67,8 +68,26 @@ namespace Arrays2D
       {
          int[][] matrix = new int[][] {
             new int[] {1, 2, 3, 4 ,5 },
-            new int[] {5, 21, 2 ,4 }
+            new int[] {5, 21, 2, 4, 6 },
+            new int[] {9, 1, 2, 2, 1},
+            new int[] {1, 2, 4, 1 ,6}
          };
+
+
+         int rows = matrix.Length;
+         int cols = matrix[0].Length;
+
+         int[][] result = new int[cols][];
+         for (int i = 0; i < cols; i++)
+         {
+            result[i] = new int[rows];
+            for (int j = 0; j < rows; j++)
+            {
+               result[i][j] = matrix[j][i];
+               Console.Write($"{result[i][j]}\t");
+            }
+            Console.WriteLine();
+         }
       }
-    }
+   }
 }
