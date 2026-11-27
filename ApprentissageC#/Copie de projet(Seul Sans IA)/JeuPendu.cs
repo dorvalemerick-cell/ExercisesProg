@@ -49,6 +49,7 @@ namespace JeuPendu
                     Console.WriteLine($"Lettres saisie: {sLettreSaisie}");
                     Console.WriteLine();
 
+<<<<<<< HEAD
                     /* ###### MONTRER DONNÉES ###### */
 
                     /* ########## DEMANDER SAISIE ########## */
@@ -60,8 +61,16 @@ namespace JeuPendu
                         sLettre = Console.ReadLine()!;
 
                     } while (string.IsNullOrEmpty(sLettre));
+=======
+                /* ########## DEMANDER SAISIE ########## */
+>>>>>>> refs/remotes/origin/Main
 
+                /* ##### FONCTION DE QUITTAGE ##### */
+                if (sLettre == "QUITTER")
+                    break;
+                } while (string.IsNullOrEmpty(sLettre));
 
+<<<<<<< HEAD
                     /* ##### FONCTION QUITTAGE, SAISIE DE MOTS COMPLET ET TRAITEMENT DE SAISIE NORMALE (lettres) ##### */
                     string? sReponse = "";
                     if (sLettre == "QUITTER")
@@ -101,6 +110,14 @@ namespace JeuPendu
                         /* TRAITER LES DONNÉES MONTRÉES EN HAUT */
                         sBanqueLettres = sBanqueLettres.Replace(sLettre!, "_");
                         sLettreSaisie += sLettre;
+=======
+                // ##### FONCTION SAISIE MOTS COMPLETS #####
+                if (sLettre == sMotTirer)
+                    iPartiesGagner += 1;
+                else
+                    Console.WriteLine("oops, un membre d'ajouter");
+
+>>>>>>> refs/remotes/origin/Main
 
                         ValiderLettre(sLettre, acMotCacher);
                     }
