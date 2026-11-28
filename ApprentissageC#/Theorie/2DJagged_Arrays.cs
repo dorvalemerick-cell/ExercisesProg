@@ -3,15 +3,18 @@ using System.Linq.Expressions;
 
 namespace Arrays2D
 {
+// https://www.c-sharpcorner.com/article/jagged-arrays-in-C-Sharp-net?srsltid=AY6E961C_43oSmHGDm-qo5pdg3Sk_cQJ1e5nxBFAX2vfQ0zQ6bIYyV_k
+
    internal class Program
    {
       public static void Main(string[] args)
       {
          // LireMatrix();
          // AdditionnerMatrix();
-         TransposeMatrix();
+         // TransposeMatrix();
          // CaluclateSumRow();
          // MultiplyMatrices();
+         AbsoluteSumOfDiagonal();
 
       }
 
@@ -188,6 +191,43 @@ namespace Arrays2D
             }
             Console.WriteLine();
          }
+      }
+
+
+      /* ####################### ABSOLUTE SUM OF A DIAGONAL ####################### */
+      public static void AbsoluteSumOfDiagonal()
+      {
+         // Create a matrix
+         int[][] a = new int[][] {
+           new int[] { 4, 2, 1 },
+           new int[] { 6, 2, 1 },
+           new int[] { 1, 6, 2 }
+         };
+
+         int[] leftDiag = new int[a.Length];
+         int primary = 0, secondary = 0;
+         int rows = a.Length;
+
+         for (int i = 0; i < rows; i++)
+         {
+            int col1 = i; // Initialize col1 to the value of i
+            int col2 = rows - 1 - i; // [i] = 0 --> col2 = 3 - 1 -0 = 2 (final index) | [i] = 1 --> col2 = 3 - 1 - 1 = 1 (middle index) etc
+
+            // add value[i][i] only if one of [i] is inside the row
+            if (col1 < a[i].Length)
+            {
+               primary += a[i][col1];
+            }
+
+            if (col2 >= 0 && col2 < a[i].Length)
+            {
+               secondary += a[i][col2];
+            }
+
+         }
+
+         Console.WriteLine(Math.Abs(primary - secondary));
+
       }
    }
 }
